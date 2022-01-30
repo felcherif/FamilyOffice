@@ -1,0 +1,47 @@
+Package: FamilyOffice
+Type: Package
+Title: Family Office
+Version: 0.0.0.9002
+Authors@R: person(given = "Frederic", family = "Elcherif", role = c("aut", "cre"), email = "f.elcherif@gmail.com")
+Maintainer: Frederic Elcherif <f.elcherif@gmail.com>
+Description: This package calculate the financial statement projections.
+License: file LICENSE
+Encoding: UTF-8
+RoxygenNote: 7.1.2
+Depends: R (>= 4.1.0)
+Imports:
+ base64enc (>= 0.1.3),
+ DT (>= 0.18),
+ formattable (>= 0.2.1),
+ ggplot2 (>= 3.3.5),
+ grid (>= 4.1.0),
+ lubridate (>= 1.7.10),
+ magrittr (>= 2.0.1),
+ methods (>= 4.1.0),
+ quantmod (>= 0.4.18),
+ reshape2 (>= 1.4.4),
+ roperators (>= 1.1.0),
+ shiny (>= 1.6.0),
+ shinydashboard (>= 0.7.1),
+ shinydashboardPlus (>= 2.0.2),
+ shinyjs (>= 2.0.0),
+ sodium (>= 1.1),
+ utils (>= 4.1.0)
+importFrom:
+ base64enc dataURI,
+ DT datatable dataTableOutput formatCurrency formatPercentage JS renderDataTable,
+ formattable accounting,
+ ggplot2 aes element_blank geom_area geom_hline ggplot ggplotGrob labs scale_color_manual scale_fill_manual theme,
+ grid grid.draw grid.newpage,
+ lubridate as_date today year,
+ methods is, new
+ quantmod getQuote,
+ reshape2 melt,
+ roperators `%+=%` `%-=%` `%*=%`,
+ shiny div shinyApp uiOutput,
+ shinydashboard box dashboardBody dashboardHeader dashboardPage dashboardSidebar menuItem sidebarMenu tabItem tabItems,
+ shinydashboardPlus box,
+ shinyjs delay hidden toggle useShinyjs,
+ sodium password_store password_verify,
+ utils capture.output
+LazyData: true
