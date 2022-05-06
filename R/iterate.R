@@ -5,7 +5,7 @@
 #' @return this function returns a text file 'output'
 #' @export
 
-iterate <- function (output) {
+iterate <- function(output) {
   for (reporting_date in as.character(output$reporting$reporting_dates)) {
     for (portfolio_name in names(output$Portfolio$portfolio)) {
       output$reporting$portfolio_name <- portfolio_name

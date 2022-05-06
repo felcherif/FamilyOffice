@@ -90,7 +90,9 @@
 
 \item{broadband_annual}{"numeric"}
 
-\item{water_annual}{"numeric"}
+\item{water_tenant_annual}{"numeric"}
+
+\item{water_owner_annual}{"numeric"}
 
 \item{heathing_tenant_annual}{"numeric"}
 

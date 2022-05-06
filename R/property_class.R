@@ -3,7 +3,7 @@
 #' @param property_value "numeric" e.g.: '895000'
 #' @param building_purchase_price "numeric" e.g.: '450000'
 #' @param currency "character", e.g.: '"CAD"'
-#' @param mortgage_type "character" e.g.: 'fixed' or 'variable' 
+#' @param mortgage_type "character" e.g.: 'fixed' or 'variable'
 #' @param mortgage_term "character", e.g.: '25'
 #' @param mortgage_spread "numeric" e.g.: -0.01
 #' @param mortgage_interest_rate_if_fixed "numeric", e.g.: '0.0395' = 3.95\% per annum
@@ -42,7 +42,8 @@
 #' @param municipal_and_school_tax_annual "numeric"
 #' @param borough_charges "numeric"
 #' @param broadband_annual "numeric"
-#' @param water_annual "numeric"
+#' @param water_tenant_annual "numeric"
+#' @param water_owner_annual "numeric"
 #' @param heathing_tenant_annual "numeric"
 #' @param heathing_owner_annual "numeric"
 #' @param electricity_tenant_annual "numeric"
@@ -96,7 +97,8 @@ property_class <- setClass(Class = "property_class",
                              municipal_and_school_tax_annual             = "numeric",
                              borough_charges                             = "numeric",
                              broadband_annual                            = "numeric",
-                             water_annual                                = "numeric",
+                             water_tenant_annual                         = "numeric",
+                             water_owner_annual                          = "numeric",
                              heathing_tenant_annual                      = "numeric",
                              heathing_owner_annual                       = "numeric",
                              electricity_tenant_annual                   = "numeric",

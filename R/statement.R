@@ -169,7 +169,7 @@ statement <- function(output) {
     output$statement$income_statement$expenses_taxes$property_expenses[[property]] <-
       matrix(
         data = 0,
-        nrow = 19,
+        nrow = 20,
         ncol = length(output$reporting$reporting_dates),
         dimnames = list(
           c(
@@ -184,7 +184,8 @@ statement <- function(output) {
             "municipal_and_school_tax",
             "borough_charges",
             "broadband",
-            "water",
+            "water_tenant",
+            "water_owner",
             "heathing_tenant",
             "heathing_owner",
             "electricity_tenant",

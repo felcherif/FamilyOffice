@@ -6,7 +6,7 @@
 
 make_portfolio_all <- function(user) {
 
-  filepath <- user_choices(user)
+  filepath <- FamilyOffice::user_choices(user)
   output <- list()
   source(file = filepath, local = TRUE)
   ptf <- list()

@@ -6,13 +6,13 @@
 #' @export
 
 input_function <- function(input, output) {
-  
+
   token <- FALSE
-  
+
   if (length(input) == 0) {
     input <- list(
-      userName = "David",
-      input_file_name = "David_&_Marie-Claude.R",
+      userName = "Frederic",
+      input_file_name = "Frederic_&_Mi_Jeong.R",
       reporting_frequency = "years",
       reporting_currency = "GBP", # currency in which the balance sheet/income statement is reported
       DTA_future_tax_rate = 20,
@@ -43,21 +43,21 @@ input_function <- function(input, output) {
       bank_rate_EUR = 2)
     token <- TRUE
   }
-  
-  filepath <- user_choices(user = input$userName)
+
+  filepath <- FamilyOffice::user_choices(user = input$userName)
   source(file = filepath, local = TRUE)
-  
+
   output$Portfolio$portfolio_all <- make_portfolio_all(user = input$userName)
   output$Portfolio$class <- find_portfolio_class(portfolio = output$Portfolio$portfolio_all) # find class of each element of the portfolio
   output$input_file <- utils::capture.output(cat(readChar(con = filepath, file.info(filepath)$size)))
-  
+
   output$reporting$valuation_date <- lubridate::as_date(x = as.character(lubridate::today())) # redefine valuation as date format
   output$reporting$taxpayer <- names(output$reporting$birthdate) # frequency of the reporting (days,weeks,months,quarters,years)
   output$reporting$projection_length_in_years <- switch(input$reporting_frequency, "years" = 12, "quarters" = 3, "months" = 1, "weeks" = 12/52, "days" = 12/365.25)
   output$reporting$reporting_currency <- input$reporting_currency # currency in which the balance sheet/income statement is reported
   output$reporting$DTA_future_tax_rate <- input$DTA_future_tax_rate / 100
   output$reporting$reporting_frequency <- input$reporting_frequency
-  output$reporting$frequency_number <- switch(input$reporting_frequency, "days" = 365.25, "weeks" = 52, "months" = 12, "quarters" = 4, "years" =1) # define frequency (numerical)
+  output$reporting$frequency_number <- switch(input$reporting_frequency, "days" = 365.25, "weeks" = 52, "months" = 12, "quarters" = 4, "years" = 1) # define frequency (numerical)
   output$reporting$reporting_dates <- seq(from = output$reporting$valuation_date, to = output$reporting$valuation_date + (output$reporting$projection_length_in_years * 365.25), by = 365.25 / output$reporting$frequency_number)
   output$economic_data$inflation$GBP <- input$GBP_inflation / 100
   output$economic_data$inflation$CAD <- input$CAD_inflation / 100
@@ -80,18 +80,18 @@ input_function <- function(input, output) {
   output$economic_data$bank_rate$EUR <- input$bank_rate_EUR / 100
   output$economic_data$bank_rate$KRW <- input$bank_rate_KRW / 100
   output$economic_data$bank_rate$CHF <- input$bank_rate_CHF / 100
-  
+
   if (token) {
     output$Portfolio$portfolio <- output$Portfolio$portfolio_all
   }
-  
+
   if (!token) {
     output$Portfolio$portfolio <- list()
-    
+
     for (pn in input$portfolio_selector) {
       output$Portfolio$portfolio[[pn]] <- output$Portfolio$portfolio_all[[pn]]
     }
   }
-  
+
   return(output)
 }
