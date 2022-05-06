@@ -53,12 +53,11 @@ global_metrics <- function(output) {
 
       # equity change
       output$metrics$equity_WO_DTA_change <-
-        rbind(
-          matrix(data = c(0, diff(x = as.numeric(output$Portfolio$portfolio[[portfolio_name]]@statement$balance_sheet$equity$total_WO_DTA["total_WO_DTA", ]))),nrow = 1,
-          dimnames = list(
-            portfolio_name,
-            as.character(output$reporting$reporting_dates))),
-          output$metrics$equity_WO_DTA_change)
+        rbind(output$metrics$equity_WO_DTA_change,
+              matrix(data = c(0, diff(x = as.numeric(output$Portfolio$portfolio[[portfolio_name]]@statement$balance_sheet$equity$total_WO_DTA["total_WO_DTA", ]))),nrow = 1,
+                                                                  dimnames = list(
+                                                                    portfolio_name,
+                                                                    as.character(output$reporting$reporting_dates))))
 
       # equity_available_for_refinancing
       output$metrics$equity_available_for_refinancing <-
