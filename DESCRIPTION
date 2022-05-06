@@ -1,7 +1,7 @@
 Package: FamilyOffice
 Type: Package
 Title: Family Office
-Version: 0.0.0.9003
+Version: 0.0.0.9004
 Authors@R: person(given = "Frederic", family = "Elcherif", role = c("aut", "cre"), email = "f.elcherif@gmail.com")
 Maintainer: Frederic Elcherif <f.elcherif@gmail.com>
 Description: This package calculate the financial statement projections.
