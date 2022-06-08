@@ -6,19 +6,23 @@
 #' @export
 
 rejig_output <- function(output) {
+
   personal_expenses <- output$statement$income_statement$expenses_taxes$personal_expenses["total", ]
+
   if (is.null(personal_expenses)) {
     gross_profit <- output$statement$income_statement$income$gross_profit
     personal_expenses <- rep(x = 0, length(gross_profit))
   }
 
   salary_income <- output$statement$cash_flow_statement$operating_activities$salary_income["total", ]
+
   if (is.null(salary_income)) {
     gross_profit <- output$statement$income_statement$income$gross_profit
     salary_income <- rep(x = 0, length(gross_profit))
   }
 
   personal_expenses_2 <- output$statement$cash_flow_statement$operating_activities$personal_expense["total", ]
+
   if (is.null(personal_expenses_2)) {
     gross_profit <- output$statement$income_statement$income$gross_profit
     personal_expenses_2 <- rep(x = 0, length(gross_profit))
@@ -42,7 +46,7 @@ rejig_output <- function(output) {
         output$statement$income_statement$expenses_taxes$savings["savings", ]
       ),
       nrow = 12,
-      byrow = T,
+      byrow = TRUE,
       dimnames = list(
         c(
           "salary",
@@ -79,7 +83,7 @@ rejig_output <- function(output) {
         output$statement$balance_sheet$equity$total_WO_DTA["total_WO_DTA", ]
       ),
       nrow = 12,
-      byrow = T,
+      byrow = TRUE,
       dimnames = list(
         c(
           "cash",
@@ -123,7 +127,7 @@ rejig_output <- function(output) {
       output$statement$cash_flow_statement$total$increase_in_cash
     ),
     nrow = 20,
-    byrow = T,
+    byrow = TRUE,
     dimnames = list(
       c(
         "salary_income",
@@ -165,4 +169,5 @@ rejig_output <- function(output) {
   )
 
   return(output)
+
 }

@@ -15,13 +15,13 @@ process_cash_flow <- function(input) {
   output                 <- global_metrics(output = output)
   output                 <- format_tables(output = output)
   output                 <- rejig_output(output)
-  
+
   sink("output.txt")
   print(output)
   sink()
   file.show("output.txt")
   file.remove("output.txt")
-  
+
   return(output)
 }
 
